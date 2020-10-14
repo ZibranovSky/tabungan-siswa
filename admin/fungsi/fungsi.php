@@ -21,7 +21,7 @@ if (!$koneksi) {
 
 //URL-----------------------------------------------------------
 function url(){
-	return $url = "//localhost/tabungan-siswa/";
+	return $url = "//localhost/tabungan-siswa-master/";
 }
 
 //SUMMON ADMIN
