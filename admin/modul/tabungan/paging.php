@@ -112,9 +112,9 @@ foreach ($data_tabungan as $tab):
                         
 
       </div>
-      <div class="modal-footer">
+    <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a target="_blank" href="index.php?m=tabungan&s=print&id_tabungan=<?= $tab['id_tabungan'];?>"><button type="submit" name="edit" class="btn btn-primary">Print</button></a>
+        <a target="_blank" href="index.php?m=tabungan&s=print&id_siswa=<?= $tab['id_siswa'];?>"><button type="submit" name="edit" class="btn btn-primary">Print</button></a>
       </div>
        
                 </div>
