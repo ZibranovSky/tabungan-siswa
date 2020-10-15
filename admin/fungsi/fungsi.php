@@ -220,7 +220,7 @@ function insert_setoran_awal(){
 	}else{
 		 $query =  "INSERT INTO tb_tabungan SET id_siswa='$id', nama='$nama',kelas='$kelas', tanggal='$tanggal', setoran=0, penarikan=0, saldo='$saldo'";
 		 mysqli_query($koneksi, $query);
-		 header("location: index.php?m=tabungan&s=awal");
+		 header("location: index.php?m=tabungan&s=print&id_siswa=$id");
 	}
 
 	// $sql = "SELECT id, nama, kelas, tanggal, saldo FROM tb_tabungan ORDER BY id_tabungan DESC";
@@ -249,7 +249,7 @@ function tambah_setoran(){
 	$query = mysqli_query($koneksi, "UPDATE tb_tabungan SET  id_siswa = '$id_siswa', nama='$nama', kelas='$kelas', tanggal='$tanggal', setoran='$setoran', penarikan=0, saldo='$tambah_saldo' WHERE id_tabungan='$id_tabungan'");
 
 	if ($query) {
-		header("location: index.php?m=tabungan&s=print&id_tabungan=$id_tabungan");
+		header("location: index.php?m=tabungan&s=print&id_siswa=$id_siswa");
 	}else{
 		echo "gagal";
 	}
@@ -274,7 +274,7 @@ function penarikan_saldo(){
 	$query = mysqli_query($koneksi, "UPDATE tb_tabungan SET  id_siswa = '$id_siswa', nama='$nama', kelas='$kelas', tanggal='$tanggal', setoran=0, penarikan='$penarikan', saldo='$penarikan_saldo' WHERE id_tabungan='$id_tabungan'");
 
 	if ($query) {
-		header("location: index.php?m=tabungan&s=print&id_tabungan=$id_tabungan");
+		header("location: index.php?m=tabungan&s=print&id_siswa=$id_siswa");
 	}else{
 		echo "gagal";
 	}
@@ -302,13 +302,19 @@ function hapus_tabungan(){
 
 
 // select print
+function select_print_siswa(){
+  global $koneksi;
+
+  $id = $_GET['id_siswa'];
+
+  return mysqli_query($koneksi, "SELECT * FROM tb_siswa where id = '$id' ");
+}
+
 function select_print_tabungan(){
   global $koneksi;
 
-  $id = $_GET['id_tabungan'];
+  $id = $_GET['id_siswa'];
 
-  return mysqli_query($koneksi, "SELECT * FROM tb_tabungan where id_tabungan = '$id' ");
+  return mysqli_query($koneksi, "SELECT * FROM tb_tabungan where id_siswa = '$id' ");
 }
-
-
  ?>
