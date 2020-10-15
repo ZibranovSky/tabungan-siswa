@@ -1,6 +1,6 @@
 <?php 
 require 'fungsi/fungsi.php';
-foreach (select_print_tabungan() as $key):
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@ foreach (select_print_tabungan() as $key):
 			</div>
 		</div>
 	</div>
-
+	<?php foreach (select_print_siswa() as $key): ?>
 		<table class="table">
 				<tr>
 					<td style="width:10%;">
@@ -42,9 +42,12 @@ foreach (select_print_tabungan() as $key):
 						: <?php echo $key['kelas'] ; ?>
 					</td>
 				</tr>
-				
+				<?php endforeach; ?>
 			</table>
 			<br>
+			<?php foreach (select_print_tabungan() as $tab): ?>
+				
+			
 			<table class="table table-striped">
 					<tr>
 						<th>
@@ -70,19 +73,19 @@ foreach (select_print_tabungan() as $key):
 						</td>
 						<td>
 
-							<?= $key['tanggal'];?>
+							<?= $tab['tanggal'];?>
 						</td>
 						<td>
-							<?= "Rp.".($key['setoran']);?>
+							<?= "Rp.".($tab['setoran']);?>
 						</td>
 						<td>
-							<?= "Rp.".($key['penarikan']); ?>
+							<?= "Rp.".($tab['penarikan']); ?>
 						</td>
 						<td>
-							<?= "Rp.".($key['saldo']); ?>
+							<?= "Rp.".($tab['saldo']); ?>
 						</td>
 					</tr>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 					
 				</table>
 			<br><br>
