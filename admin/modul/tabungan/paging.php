@@ -21,10 +21,10 @@ foreach ($data_tabungan as $tab):
 
      <tr>
                               <td><?= $i++;?></td>
-                            
+                              
                               <td><?=  $tab['nama'];?></td>
                               <td><?=  $tab['kelas'];?></td>
-                             <td><?=  ("Rp.".$tab['saldo']); ?></td> 
+                             <td><?=rupiah($tab['saldo']);?></td> 
                               <!--  <td><?= $tab['jumlah_setoran'] - $tab['jumlah_penarikan']; ?></td> -->
                              
 
@@ -61,7 +61,7 @@ foreach ($data_tabungan as $tab):
                           <b><p><?= $tab['kelas'];?></p></b>
 
                           <p>Saldo</p>
-                          <b><p><?="Rp. ".($tab['saldo']);?></p></b>
+                          <b><p><?=rupiah($tab['saldo']);?></p></b>
                         
                        
                         
@@ -107,12 +107,19 @@ foreach ($data_tabungan as $tab):
                           <p>Kelas</p>
                           <b><p><?= $tab['kelas'];?></p></b>
 
+                          <p>Setoran</p>
+                          <b><p><?= rupiah($tab['setoran']);?></p></b>
+
+                          <p>Penarikan</p>
+                          <b><p><?=rupiah($tab['penarikan']);?></p></b>
+
+
                           <p>Saldo</p>
-                          <b><p><?="Rp. ".($tab['saldo']);?></p></b>
+                          <b><p><?=rupiah($tab['saldo']);?></p></b>
                         
 
       </div>
-    <div class="modal-footer">
+      <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <a target="_blank" href="index.php?m=tabungan&s=print&id_siswa=<?= $tab['id_siswa'];?>"><button type="submit" name="edit" class="btn btn-primary">Print</button></a>
       </div>
