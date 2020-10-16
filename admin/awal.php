@@ -245,7 +245,7 @@ Tabungan</a></li>
                                     <i class="fa fa-money fa-5x" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                 <?= "Rp.".$uang['jsaldo'];?>
+                                  <?= rupiah($uang['jsaldo']);?>
                                     <div>Jumlah Saldo</div>
                                 </div>
                             </div>
