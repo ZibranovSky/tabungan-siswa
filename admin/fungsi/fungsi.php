@@ -317,4 +317,11 @@ function select_print_tabungan(){
 
   return mysqli_query($koneksi, "SELECT * FROM tb_tabungan where id_siswa = '$id' ");
 }
+
+// function rupiah 
+
+function rupiah($angka){
+	$hasil = "Rp. ". number_format($angka,2,',','.');
+	return $hasil;
+}
  ?>
