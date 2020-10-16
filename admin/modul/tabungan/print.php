@@ -76,13 +76,13 @@ require 'fungsi/fungsi.php';
 							<?= $tab['tanggal'];?>
 						</td>
 						<td>
-							<?= "Rp.".($tab['setoran']);?>
+							<?=  rupiah($tab['setoran']);?>
 						</td>
 						<td>
-							<?= "Rp.".($tab['penarikan']); ?>
+							<?= rupiah($tab['penarikan']); ?>
 						</td>
 						<td>
-							<?= "Rp.".($tab['saldo']); ?>
+							<?= rupiah($tab['saldo']); ?>
 						</td>
 					</tr>
 				<?php endforeach ?>
