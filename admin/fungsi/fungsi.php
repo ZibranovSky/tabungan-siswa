@@ -105,7 +105,7 @@ function update_admin(){
 
 	$id = $_POST['id'];
 	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$password = md5($_POST['password']);
 	$nama = $_POST['nama'];
 	$telepon = $_POST['telepon'];
 	$foto = $_FILES['foto']['name'];
