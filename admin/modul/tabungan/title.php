@@ -68,17 +68,23 @@ if (isset($_POST['edit'])) {
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
           <div class="navbar-header">
+
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-               <img src="img/admin/<?= $adm['foto'];?>" height="50"></i> <?php echo $adm['nama']; ?>
+               <img src="img/admin/<?= $adm['foto'];?>" height="50"> </i> <?php echo $adm['nama']; ?>
               </a>
               <ul class="dropdown-menu dropdown-user">
                 <li>
-                  <form class="" action="logout.php" onclick="return confirm('yakin ingin logout?');" method="post">
-                    <button class="btn btn-default" type="submit" name="keluar"><i class="fa fa-sign-out"></i> Logout</button>
-                  </form>
+                 <a href="index.php?m=admin&s=profil"><i class="fa fa-user"></i> Profil</a>
+                    
+                
+                </li><br>
+                <li>
+                  <a href="logout.php" onclick="return confirm('yakin ingin logout?');"> <i class="fa fa-sign-out"></i> Logout</a>
+                 
+                  
                 </li>
               </ul>
             </li>
