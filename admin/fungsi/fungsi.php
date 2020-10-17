@@ -21,7 +21,7 @@ if (!$koneksi) {
 
 //URL-----------------------------------------------------------
 function url(){
-	return $url = "//localhost/tabungan-siswa-master/";
+	return $url = "//localhost/tabungan-siswa/";
 }
 
 //SUMMON ADMIN
@@ -49,7 +49,18 @@ function insert_admin(){
 	$telepon = $_POST['telepon'];
 	$foto = $_FILES['foto']['name'];
 
-	if ($foto != "") {
+	// cek username
+
+	$tambah = mysqli_query($koneksi, "SELECT * FROM tb_admin WHERE username='$username'");
+	$row = mysqli_fetch_row($tambah);
+
+	if ($row) {
+		echo "<div class='alert alert-danger alert-dismissable'>
+  			<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+  			Maaf, username sudah ada.
+  			</div>";
+	}else{
+			if ($foto != "") {
 		$allowed_ext = array('png','jpg');
 		$x = explode(".", $foto);
 		$ekstensi = strtolower(end($x));
@@ -69,6 +80,9 @@ function insert_admin(){
 
 
 	}
+	}
+
+
 }
 
 // HAPUS ADMIN
@@ -83,6 +97,56 @@ function hapus_admin(){
 	//hapus foto
 	unlink("img/admin/$foto");
 	return mysqli_query($koneksi, "DELETE FROM tb_admin WHERE id = '$id'");
+}
+
+// EDIT ADMIN
+function update_admin(){
+	global $koneksi;
+
+	$id = $_POST['id'];
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$nama = $_POST['nama'];
+	$telepon = $_POST['telepon'];
+	$foto = $_FILES['foto']['name'];
+
+	// Unlink
+	$sql   = "SELECT * FROM tb_admin WHERE id='$id'";
+	$hapus = mysqli_query($koneksi,$sql);
+	$r     = mysqli_fetch_array($hapus);
+
+	$hapus_foto = $r['foto'];
+
+	// cek username
+
+	$tambah = mysqli_query($koneksi, "SELECT * FROM tb_admin WHERE username='$username'");
+	$row = mysqli_fetch_row($tambah);
+
+	if(isset($_POST['ubahfoto'])){
+		
+		if ($foto != "") {
+		$allowed_ext = array('png','jpg');
+		$x = explode(".", $foto);
+		$ekstensi = strtolower(end($x));
+		$file_tmp = $_FILES['foto']['tmp_name'];
+		$angka_acak = rand(1,999);
+   		$nama_file_baru = $angka_acak.'-'.$foto;
+   		    if (in_array($ekstensi, $allowed_ext) 	=== true) {
+      			move_uploaded_file($file_tmp, 'img/admin/'.$nama_file_baru);
+      			$result = mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', telepon='$telepon', foto='$nama_file_baru' WHERE id='$id'");
+      			if ($result) {
+      			  unlink("img/admin/$hapus_foto");
+      				}else{
+      			  echo "gagal";
+      				}
+    }
+
+
+
+	}
+	}else{
+		return mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', telepon='$telepon' WHERE id='$id'");
+	}
 }
 
 //SELECT SISWA
@@ -243,13 +307,31 @@ function tambah_setoran(){
 	$saldo = $_POST['saldo'];
 
 	// Penambahan saldo
-
 	$tambah_saldo = $saldo + $setoran;
 
-	$query = mysqli_query($koneksi, "UPDATE tb_tabungan SET  id_siswa = '$id_siswa', nama='$nama', kelas='$kelas', tanggal='$tanggal', setoran='$setoran', penarikan=0, saldo='$tambah_saldo' WHERE id_tabungan='$id_tabungan'");
+	//cek id siswa
+	$tambah = mysqli_query($koneksi, "SELECT * FROM tb_tabungan WHERE id_siswa='$id_siswa'");
+	$row = mysqli_fetch_row($tambah);
+
+	if ($row) {
+		$query = mysqli_query($koneksi, "UPDATE tb_tabungan SET  id_siswa = '$id_siswa', nama='$nama', kelas='$kelas', tanggal='$tanggal', setoran='$setoran', penarikan=0, saldo='$tambah_saldo' WHERE id_tabungan='$id_tabungan'");
+		header("location: index.php?m=tabungan&s=print&id_siswa=$id_siswa");
+	}else{
+		$query =  "INSERT INTO tb_tabungan SET id_siswa='$id', nama='$nama',kelas='$kelas', tanggal='$tanggal', setoran='setoran', penarikan=0, saldo='$setoran'";
+		 mysqli_query($koneksi, $query);
+		 header("location: index.php?m=tabungan&s=print&id_siswa=$id");
+	}
+
+
+
+	
+
+	
+
+	
 
 	if ($query) {
-		header("location: index.php?m=tabungan&s=print&id_siswa=$id_siswa");
+		
 	}else{
 		echo "gagal";
 	}
@@ -324,4 +406,5 @@ function rupiah($angka){
 	$hasil = "Rp. ". number_format($angka,2,',','.');
 	return $hasil;
 }
+
  ?>
