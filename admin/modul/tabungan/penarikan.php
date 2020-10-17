@@ -67,17 +67,23 @@ foreach (summon_admin() as $adm):
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
           <div class="navbar-header">
+
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-               <img src="img/admin/<?= $adm['foto'];?>" height="50"></i> <?php echo $adm['nama']; ?>
+               <img src="img/admin/<?= $adm['foto'];?>" height="50"> </i> <?php echo $adm['nama']; ?>
               </a>
               <ul class="dropdown-menu dropdown-user">
                 <li>
-                  <form class="" action="logout.php" onclick="return confirm('yakin ingin logout?');" method="post">
-                    <button class="btn btn-default" type="submit" name="keluar"><i class="fa fa-sign-out"></i> Logout</button>
-                  </form>
+                 <a href="index.php?m=admin&s=profil"><i class="fa fa-user"></i> Profil</a>
+                    
+                
+                </li><br>
+                <li>
+                  <a href="logout.php" onclick="return confirm('yakin ingin logout?');"> <i class="fa fa-sign-out"></i> Logout</a>
+                 
+                  
                 </li>
               </ul>
             </li>
@@ -143,7 +149,7 @@ Tabungan</a></li>
 
             <div class="form-group">
               <label>Jumlah Penarikan</label>
-              <input type="number" name="penarikan"  class="form-control">
+              <input type="number" name="penarikan" id="penarikan" class="form-control">
             </div>
 
 
@@ -152,11 +158,31 @@ Tabungan</a></li>
               <label>Saldo Anda</label>
               <input type="text" class="form-control" id="saldo" readonly name="saldo">
             </div>
+            <i><b><span id="message2" style="color: red;"></span></b></i>
 
             <div class="form-group">
-              <button class="btn btn-success" name="simpan">Simpan</button>
+              <button class="btn btn-success" id="endButton" name="simpan">Simpan</button>
               <button class="btn btn-danger">Batal</button>
             </div>
+
+            <script type="text/javascript">
+                
+                    saldo = document.getElementById('saldo')
+                    penarikan = document.getElementById('penarikan')
+
+
+                    penarikan.addEventListener('keyup', function(){
+                      if(penarikan.value == ""){
+                        message2.textContent = 'Kolom tidak boleh kosong!'
+                        document.getElementById('endButton').disabled = true;
+                      }else if (penarikan.value) {
+                        message2.textContent = ''
+                        document.getElementById('endButton').disabled = false;
+                      }
+                    })
+
+
+                  </script>
                           </form>           
                         </div>
                        
