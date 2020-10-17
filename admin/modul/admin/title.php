@@ -63,17 +63,23 @@ if (isset($_POST['hapus-adm'])) {
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
           <div class="navbar-header">
+
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-               <img src="img/admin/<?= $adm['foto'];?>" height="50"></i> <?php echo $adm['nama']; ?>
+               <img src="img/admin/<?= $adm['foto'];?>" height="50"> </i> <?php echo $adm['nama']; ?>
               </a>
               <ul class="dropdown-menu dropdown-user">
                 <li>
-                  <form class="" action="logout.php" onclick="return confirm('yakin ingin logout?');" method="post">
-                    <button class="btn btn-default" type="submit" name="keluar"><i class="fa fa-sign-out"></i> Logout</button>
-                  </form>
+                 <a href="index.php?m=admin&s=profil"><i class="fa fa-user"></i> Profil</a>
+                    
+                
+                </li><br>
+                <li>
+                  <a href="logout.php" onclick="return confirm('yakin ingin logout?');"> <i class="fa fa-sign-out"></i> Logout</a>
+                 
+                  
                 </li>
               </ul>
             </li>
@@ -162,7 +168,7 @@ if (isset($_POST['hapus-adm'])) {
                         <th>Nama</th>
                         <th>Telepon</th>
                         <th>Foto</th>
-                        <th>Aksi</th>
+
                            
                                                 
                     </tr>
@@ -180,46 +186,7 @@ if (isset($_POST['hapus-adm'])) {
                               <td><?=  $key['telepon'];?></td>
                               <td><img src="img/admin/<?=  $key['foto'];?>" height="150"></td>
                               <td>
-                                <!-- Trigger Modal Hapus -->
-                              <div data-toggle="modal" data-target="#hapus-admin<?= $key['id'] ?>">
-                              <button type="button" class="btn btn-danger datapotensi" data-toggle="tooltip" title="Hapus">
-                              <i class="fa fa-trash"></i>
-                              </button>
-                              </div>
-
-                              <!-- Modal Hapus -->
-                            <form action="" method="POST">
-                      <div class="modal fade" id="hapus-admin<?= $key['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="hapus-admin<?= $key['id'] ?>" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <b><p class="modal-title" id="hapus-admin<?= $key['id'] ?>" style="text-align: center; font-size: 18px;">Apakah anda yakin ingin dihapus?</p></b>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal-body">
-                            <p>ID</p>
-                            <b><p><?= $key['id']; ?></p></b>
-                            <p>Nama Admin</p>
-                        <b><p><?= $key['nama'] ?></p></b>
-                        <p>Nomor Telepon</p>
-                        <b><p><?= $key['telepon'] ?></p></b>
-                        <p>Foto</p>
-                        <b><img src="img/admin/<?= $key['foto']; ?>" height="150"></b>
-                          <input type="hidden" name="id" value="<?= $key['id'] ?>" class="form-control" hidden>
-                          </div>
-                         
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" name="hapus-adm" class="btn btn-danger">Hapus</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                    </form>
+                                
 
                               </td>
                               </tr>
