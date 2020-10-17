@@ -16,7 +16,7 @@ foreach (summon_admin() as $adm):
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dashboard</title>
+  <title>Profil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="<?= url() ?>vendors/img/icon2.png">
