@@ -1,9 +1,5 @@
 <?php 
 require 'fungsi/fungsi.php';
-if (!isset($_SESSION["idtabsis"])) {
-  header("Location: login.php");
-  exit();
-}
 
 if (isset($_POST['edit'])) {
 	update_admin();
@@ -41,6 +37,7 @@ foreach (summon_admin() as $adm):
         bottom: 0;
         width: 100%;
     }
+ 
         
     /* On small screens, set height to 'auto' for the grid */
     @media screen and (max-width: 767px) {
@@ -143,7 +140,25 @@ Tabungan</a></li>
        			</tr>
        			<tr>
        				<td>Foto :</td>
-       				<td><img src="img/admin/<?= $adm['foto'];?>" height="150"></td>
+       				<td><img src="img/admin/<?= $adm['foto'];?>" height="150" data-target="#view_image" data-toggle="modal">
+
+                <!-- modal view image -->
+                <div class="modal fade" id="view_image" tabindex="-1" role="dialog" aria-labelledby="view_image" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+          <!--       <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b><p class="modal-title" id="view_image" style="text-align: center; font-size: 18px;">Edit Data Admin</p></b>
+                </div> -->
+                <!-- Modal Body -->
+              <!--   <div class="modal-body"> </div> -->
+                <center><img src="img/admin/<?= $adm['foto'];?>" height="512"></center>
+               
+              </div>
+            </div>
+              </td>
        			</tr>
        			<tr>
        				<td>
