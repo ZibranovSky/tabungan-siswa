@@ -35,7 +35,7 @@ if ($ketemu>0) {
 	session_start();
 	$_SESSION['idtabsis'] = $b['id'];
 	$_SESSION['usertabsis'] = $b['username'];
-	$_SESSION['passtabsis'] = $b['password'];
+	$_SESSION['passtabsis'] = md5($b['password']);
 	$_SESSION['namatabsis'] = $b['nama'];
 	$_SESSION['telepontabsis'] = $b['telepon'];
 	$_SESSION['pototabsis'] = $b['foto'];
