@@ -30,6 +30,13 @@ foreach (summon_admin() as $adm):
       background-color: #f1f1f1;
       height: 100%;
     }
+
+    .footer-fixed {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
         
     /* On small screens, set height to 'auto' for the grid */
     @media screen and (max-width: 767px) {
@@ -69,13 +76,18 @@ foreach (summon_admin() as $adm):
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-               <img src="img/admin/<?= $adm['foto'];?>" height="50"></i> <?php echo $adm['nama']; ?>
+               <img src="img/admin/<?= $adm['foto'];?>" height="50"> </i> <?php echo $adm['nama']; ?>
               </a>
               <ul class="dropdown-menu dropdown-user">
                 <li>
-                  <form class="" action="logout.php" onclick="return confirm('yakin ingin logout?');" method="post">
-                    <button class="btn btn-default" type="submit" name="keluar"><i class="fa fa-sign-out"></i> Logout</button>
-                  </form>
+                 <a href="index.php?m=admin&s=profil"><i class="fa fa-user"></i> Profil</a>
+                    
+                
+                </li><br>
+                <li>
+                  <a href="logout.php" onclick="return confirm('yakin ingin logout?');"> <i class="fa fa-sign-out"></i> Logout</a>
+                 
+                  
                 </li>
               </ul>
             </li>
@@ -245,7 +257,7 @@ Tabungan</a></li>
                                     <i class="fa fa-money fa-5x" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                  <?= rupiah($uang['jsaldo']);?>
+                                 <?= rupiah($uang['jsaldo']);?>
                                     <div>Jumlah Saldo</div>
                                 </div>
                             </div>
