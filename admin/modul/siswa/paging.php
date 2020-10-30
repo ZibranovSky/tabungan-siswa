@@ -13,8 +13,18 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_siswa");
 $jumlah_data = mysqli_num_rows($data);
 $total_halaman = ceil($jumlah_data / $batas);
 
-$data_siswa = mysqli_query($koneksi, "SELECT * FROM tb_siswa LIMIT $halaman_awal, $batas");
+
 $nomor = $halaman_awal+1;
+
+
+// cari
+if (isset($_POST['go'])) {
+  $cari = $_POST['cari'];
+  $data_siswa = mysqli_query($koneksi, "SELECT * FROM tb_siswa WHERE nama LIKE '%".$cari."%'");
+}else{
+  $data_siswa = mysqli_query($koneksi, "SELECT * FROM tb_siswa LIMIT $halaman_awal, $batas");
+}
+
 
 foreach ($data_siswa as $key):
   ?>
