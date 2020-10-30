@@ -12,6 +12,7 @@ if (isset($_POST['hapus-siswa'])) {
 if (isset($_POST['edit'])) {
   edit_siswa();
 }
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,7 +124,7 @@ Tabungan</a></li>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Tambah data admin</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Tambah data siswa</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -188,6 +189,17 @@ Tabungan</a></li>
 </div>
       </div>
 
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <form action="" method="POST">
+        <label>Cari</label>
+        <input type="text" name="cari" placeholder="Cari nama siswa" class="">
+        <input type="submit" name="go" value="Cari" class="btn btn-success">
+      </form>
+    </div>
+  </div>
+</div>
 
        <div class="row">
         <div class="col-sm-12">
