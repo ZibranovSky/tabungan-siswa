@@ -5,7 +5,7 @@ Tabungan siswa adalah web aplikasi yang berfungsi untuk melakukan pencatatan dat
   1. Fitur Login
     <ul type="square">
     <li>Memakai pengamanan MD5 untuk password</li>
-    <li>Admin dan Petugas mempunyai tempat loginnya masing - masing</li>
+   
     </ul>
     
     
@@ -27,8 +27,7 @@ Tabungan siswa adalah web aplikasi yang berfungsi untuk melakukan pencatatan dat
      <ol type="1">
     <li>Download repository</li>
     <li>Ekstrak file pada direktori server</li>
-    <li>Admin bisa melihat, menambahkan, menghapus dan mengubah data kelas</li>
-    <li>Admin bisa menambahkan setoran awal tabungan siswa.</li>
+   
     <li>import file database "tabungan_siswa.sql"</li>
     <li>Masuk ke browser ketik "localhost/tabungan-siswa/"</li>
     <li>Klik menu "masuk" untuk login</li>
