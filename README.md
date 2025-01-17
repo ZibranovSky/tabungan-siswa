@@ -38,9 +38,7 @@ Tabungan siswa adalah web aplikasi yang berfungsi untuk melakukan pencatatan dat
     <i>Sebelum mengimport database, pastikan anda membuat database sesuai dengan nama database yang ada di dalam folder db, yaitu 'tabungan_siswa.sql'</i>
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-Jika ada bagian yang error atau yang ada ingin ditambahkan mohon hubungi :
 
-Discord : royal_fortune19
 
 terima kasih
 <strong> HARAP JANGAN MENGUBAH COPYRIGHT YANG ADA DI FOOTER WEBSITE!</strong>
